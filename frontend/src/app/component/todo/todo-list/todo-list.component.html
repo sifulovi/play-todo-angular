@@ -1,0 +1,49 @@
+<div>
+
+
+  <button *ngIf="service.isAdminUser()" nz-button nzType="primary" (click)='showModal()'>Create a Todo</button>
+
+  <div class="assignment-content  uk-child-width-1-3@m uk-child-width-1-2@s" uk-grid>
+    <div *ngFor=" let todo of todoList">
+      <div class="uk-card uk-card-default">
+        <div class="inner-box">
+          <nz-card style="" [nzBordered]="false" nzTitle="{{todo?.todoTitle}}" [nzExtra]="extraTemplate">>
+            <div>
+              {{todo.todoDescription}}
+            </div>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: space-between; align-items: center">
+              <div>
+                <div style="text-align: center; margin-top: 10px;">
+                  <p> Status: <strong>{{todo?.todoStatus}}</strong></p>
+                </div>
+              </div>
+              <div>
+                <button (click)="showModalForComplete(todo?.id)" nz-button nzType="default"
+                        nzBlock>Change Status
+                </button>
+
+              </div>
+            </div>
+
+          </nz-card>
+          <ng-template #extraTemplate>
+            <a (click)="delete(todo.id)">Delete</a>
+          </ng-template>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <app-change-todo-status *ngIf='isShowModalForComplete' (modalEmitter)='isShowModalForComplete=$event'
+                          [todoId]="todoId"
+                          [isShowModal]="isShowModalForComplete"></app-change-todo-status>
+
+
+  <app-create-todo *ngIf='isShowModalForCreate' (modalEmitter)='isShowModalForCreate=$event'
+                   [isShowModal]="isShowModalForCreate"></app-create-todo>
+
+</div>

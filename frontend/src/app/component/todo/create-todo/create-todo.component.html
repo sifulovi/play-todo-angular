@@ -1,0 +1,43 @@
+<nz-modal [(nzVisible)]="isShowModal" nzTitle="Create a Todo" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" class="login-form">
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input todo title">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="todoTitle" placeholder="TOdo Title"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input todo description">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="todoDescription" placeholder="Todo Description"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please Select Status">
+          <nz-select formControlName="todoStatus" nzShowSearch nzAllowClear
+                     nzPlaceHolder="Select a Status">
+            <nz-option nzLabel="Active" nzValue="ACTIVE"></nz-option>
+            <nz-option nzLabel="Inactive" nzValue="INACTIVE"></nz-option>
+            <nz-option nzLabel="Done" nzValue="DONE"></nz-option>
+
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+
+  </ng-container>
+
+  <div *nzModalFooter>
+    <button nz-button (click)="submitForm()" class="login-form-button login-form-margin" [nzType]="'primary'">
+      Create a Todo
+    </button>
+  </div>
+
+</nz-modal>

@@ -1,0 +1,24 @@
+<nz-modal [(nzVisible)]="isShowModal" nzTitle="Change Status" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please Select Status">
+          <nz-select  formControlName="todoStatus" nzShowSearch nzAllowClear
+                     nzPlaceHolder="Select a Status">
+            <nz-option nzLabel="Active" nzValue="ACTIVE"></nz-option>
+            <nz-option nzLabel="Inactive" nzValue="INACTIVE"></nz-option>
+            <nz-option nzLabel="Done" nzValue="DONE"></nz-option>
+
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button (click)="submitForm()" class="login-form-button login-form-margin" [nzType]="'primary'">
+      Submit
+    </button>
+  </div>
+</nz-modal>

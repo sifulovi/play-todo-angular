@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET           /                              controllers.HomeController.index()
+POST          /login                         controllers.UserController.login(request:Request)
+GET           /todo                          controllers.TodoController.allTodos()
+POST          /todo                          controllers.TodoController.create(request:Request)
+DELETE        /todo/:id                      controllers.TodoController.deleteTodo(id)
+GET           /inactive-todo                 controllers.TodoController.allTodosByInactive()
+PUT           /todo-status-update/:id        controllers.TodoController.statusUpdate(request:Request,id)
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file                  controllers.Assets.versioned(path="/public", file: Asset)
